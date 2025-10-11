@@ -27,7 +27,7 @@ La API maneja los pacientes con el siguiente formato JSON:
     "doctor": "Melo Tirra",
     "estado": "Vivo"
 }
-
+```
 ## Instalación
 
 Clonar el repositorio:
