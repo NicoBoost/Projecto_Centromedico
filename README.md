@@ -30,37 +30,37 @@ La API maneja los pacientes con el siguiente formato JSON:
 ```
 ## Instalación
 
-Clonar el repositorio:
+**Clonar el repositorio:**
 
-git clone https://github.com/NicoBoost/Projecto_Centromedico.git
-cd Projecto_Centromedico
-
-
-Crear y activar un entorno virtual:
-
-python -m venv venv
-source venv/bin/activate    # Linux/Mac
-venv\Scripts\activate       # Windows
+- git clone https://github.com/NicoBoost/Projecto_Centromedico.git
+- cd Projecto_Centromedico
 
 
-Instalar dependencias:
+**Crear y activar un entorno virtual:**
 
-pip install -r requirements.txt
-
-
-Ejecutar migraciones:
-
-python manage.py migrate
+- python -m venv venv
+- source venv/bin/activate    # Linux/Mac
+- venv\Scripts\activate       # Windows
 
 
-Ejecutar el servidor:
+**Instalar dependencias:**
 
-python manage.py runserver
+- pip install -r requirements.txt
 
 
-Acceder a la aplicación en:
+**Ejecutar migraciones:**
 
-http://127.0.0.1:8000/
+- python manage.py migrate
+
+
+**Ejecutar el servidor:**
+
+- python manage.py runserver
+
+
+**Acceder a la aplicación en:**
+
+- http://127.0.0.1:8000/
 
 ## Estructura de archivos
 
