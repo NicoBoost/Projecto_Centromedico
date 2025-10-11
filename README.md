@@ -27,7 +27,8 @@ La API maneja los pacientes con el siguiente formato JSON:
     "doctor": "Melo Tirra",
     "estado": "Vivo"
 }
-Instalación
+
+## Instalación
 
 Clonar el repositorio:
 
@@ -61,7 +62,7 @@ Acceder a la aplicación en:
 
 http://127.0.0.1:8000/
 
-Estructura de archivos
+## Estructura de archivos
 
 pacientes/ → App principal con modelos, vistas y templates.
 
@@ -71,7 +72,7 @@ pacientes/static/ → Archivos CSS y JS.
 
 pacientes/api/ → API REST para la gestión de pacientes.
 
-Tecnologías utilizadas
+## Tecnologías utilizadas
 
 Python 3.13
 
@@ -83,7 +84,7 @@ Materialize CSS
 
 SQLite (Base de datos)
 
-Autor
+## Autor
 
 Nicolás Martinez
 GitHub: NicoBoost
