@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listado de Pacientes</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pacientes del Centro Médico</h1>
+
+  <table id="tablaPacientes">
+    <thead>
+      <tr>
+        <th>RUT</th>
+        <th>Apellidos</th>
+        <th>Nombres</th>
+        <th>Fecha Nacimiento</th>
+        <th>Hora Consulta</th>
+        <th>Diagnóstico</th>
+        <th>Doctor</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se insertarán los datos -->
+    </tbody>
+  </table>
+
+  <script>
+    async function cargarPacientes() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/pacientes/');
+        if (!response.ok) {
+          throw new Error('Error al obtener datos: ' + response.status);
+        }
+        const pacientes = await response.json();
+
+        const tbody = document.querySelector('#tablaPacientes tbody');
+        tbody.innerHTML = ''; // limpiar tabla antes de insertar
+
+        pacientes.forEach(paciente => {
+          const fila = document.createElement('tr');
+
+          fila.innerHTML = `
+            <td>${paciente.rut}</td>
+            <td>${paciente.apellidos}</td>
+            <td>${paciente.nombres}</td>
+            <td>${paciente.fecha_nacimiento}</td>
+            <td>${paciente.hora_consulta}</td>
+            <td>${paciente.diagnostico}</td>
+            <td>${paciente.doctor}</td>
+            <td>${paciente.estado}</td>
+          `;
+
+          tbody.appendChild(fila);
+        });
+      } catch (error) {
+        console.error(error);
+        alert('No se pudo cargar la lista de pacientes.');
+      }
+    }
+
+    // Cargar los pacientes al cargar la página
+    window.onload = cargarPacientes;
+  </script>
+</body>
+</html>
