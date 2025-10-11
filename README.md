@@ -27,3 +27,63 @@ La API maneja los pacientes con el siguiente formato JSON:
     "doctor": "Melo Tirra",
     "estado": "Vivo"
 }
+Instalación
+
+Clonar el repositorio:
+
+git clone https://github.com/NicoBoost/Projecto_Centromedico.git
+cd Projecto_Centromedico
+
+
+Crear y activar un entorno virtual:
+
+python -m venv venv
+source venv/bin/activate    # Linux/Mac
+venv\Scripts\activate       # Windows
+
+
+Instalar dependencias:
+
+pip install -r requirements.txt
+
+
+Ejecutar migraciones:
+
+python manage.py migrate
+
+
+Ejecutar el servidor:
+
+python manage.py runserver
+
+
+Acceder a la aplicación en:
+
+http://127.0.0.1:8000/
+
+Estructura de archivos
+
+pacientes/ → App principal con modelos, vistas y templates.
+
+pacientes/templates/ → Contiene los templates HTML.
+
+pacientes/static/ → Archivos CSS y JS.
+
+pacientes/api/ → API REST para la gestión de pacientes.
+
+Tecnologías utilizadas
+
+Python 3.13
+
+Django 5.2
+
+Django REST Framework
+
+Materialize CSS
+
+SQLite (Base de datos)
+
+Autor
+
+Nicolás Martinez
+GitHub: NicoBoost
