@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block content %}
+<h4>Registrar Paciente</h4>
+<form method="post">
+    {% csrf_token %}
+    <div class="input-field">
+        <input type="text" name="rut" id="rut" required>
+        <label for="rut">RUT</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="apellidos" id="apellidos" required>
+        <label for="apellidos">Apellidos</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="nombres" id="nombres" required>
+        <label for="nombres">Nombres</label>
+    </div>
+    <div class="input-field">
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+    </div>
+    <div class="input-field">
+        <input type="time" name="hora_consulta" id="hora_consulta" required>
+        <label for="hora_consulta">Hora de Consulta</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="diagnostico" id="diagnostico" required>
+        <label for="diagnostico">Diagnóstico</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="doctor" id="doctor" required>
+        <label for="doctor">Doctor</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="estado" id="estado" required>
+        <label for="estado">Estado</label>
+    </div>
+    <button type="submit" class="btn teal">Registrar</button>
+</form>
+{% endblock %}

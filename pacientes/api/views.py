@@ -1,3 +1,4 @@
+from rest_framework import generics
 from rest_framework import viewsets
 from pacientes.models import Paciente
 from .serializers import PacienteSerializer
@@ -14,3 +15,11 @@ class PacienteViewSet(viewsets.ModelViewSet):
         pacientes_gripales = Paciente.objects.filter(estado__iexact='gripal')
         serializer = self.get_serializer(pacientes_gripales, many=True)
         return Response(serializer.data)
+
+class PacienteListCreate(generics.ListCreateAPIView):
+    queryset = Paciente.objects.all()
+    serializer_class = PacienteSerializer
+
+class PacienteDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Paciente.objects.all()
+    serializer_class = PacienteSerializer

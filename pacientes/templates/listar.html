@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Pacientes{% endblock %}
+
+{% block content %}
+<h4>Listado de Pacientes</h4>
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>RUT</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Fecha Nacimiento</th>
+            <th>Hora Consulta</th>
+            <th>Diagnóstico</th>
+            <th>Doctor</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in pacientes %}
+        <tr>
+            <td>{{ p.rut }}</td>
+            <td>{{ p.apellidos }}</td>
+            <td>{{ p.nombres }}</td>
+            <td>{{ p.fecha_nacimiento }}</td>
+            <td>{{ p.hora_consulta }}</td>
+            <td>{{ p.diagnostico }}</td>
+            <td>{{ p.doctor }}</td>
+            <td>{{ p.estado }}</td>
+            <td>
+                <a href="{% url 'editar' p.id %}" class="btn-small amber">Editar</a>
+                <a href="{% url 'eliminar' p.id %}" class="btn-small red">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

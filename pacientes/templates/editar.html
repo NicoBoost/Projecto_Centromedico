@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Paciente{% endblock %}
+
+{% block content %}
+<h4>Editar Paciente</h4>
+<form method="post">
+    {% csrf_token %}
+    <div class="input-field">
+        <input type="text" name="rut" id="rut" value="{{ paciente.rut }}" required>
+        <label for="rut" class="active">RUT</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="apellidos" id="apellidos" value="{{ paciente.apellidos }}" required>
+        <label for="apellidos" class="active">Apellidos</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="nombres" id="nombres" value="{{ paciente.nombres }}" required>
+        <label for="nombres" class="active">Nombres</label>
+    </div>
+    <div class="input-field">
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ paciente.fecha_nacimiento }}" required>
+        <label for="fecha_nacimiento" class="active">Fecha de Nacimiento</label>
+    </div>
+    <div class="input-field">
+        <input type="time" name="hora_consulta" id="hora_consulta" value="{{ paciente.hora_consulta }}" required>
+        <label for="hora_consulta" class="active">Hora de Consulta</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="diagnostico" id="diagnostico" value="{{ paciente.diagnostico }}" required>
+        <label for="diagnostico" class="active">Diagnóstico</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="doctor" id="doctor" value="{{ paciente.doctor }}" required>
+        <label for="doctor" class="active">Doctor</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="estado" id="estado" value="{{ paciente.estado }}" required>
+        <label for="estado" class="active">Estado</label>
+    </div>
+    <button type="submit" class="btn teal">Actualizar</button>
+</form>
+{% endblock %}
