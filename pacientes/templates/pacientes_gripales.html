@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Pacientes con Estado Gripal{% endblock %}
+
+{% block content %}
+<h4>Pacientes con Estado Gripal</h4>
+
+<table class="highlight" id="tabla-pacientes">
+    <thead>
+        <tr>
+            <th>RUT</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Fecha Nacimiento</th>
+            <th>Hora Consulta</th>
+            <th>Diagnóstico</th>
+            <th>Doctor</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody id="cuerpo-tabla">
+        <tr>
+            <td colspan="8" class="center-align">Cargando pacientes...</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/pacientes/estado_gripal/')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar los pacientes');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const tbody = document.getElementById('cuerpo-tabla');
+            tbody.innerHTML = ''; // Limpiar contenido inicial
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="center-align">No hay pacientes con estado gripal.</td></tr>';
+                return;
+            }
+
+            data.forEach(p => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${p.rut}</td>
+                    <td>${p.apellidos}</td>
+                    <td>${p.nombres}</td>
+                    <td>${p.fecha_nacimiento}</td>
+                    <td>${p.hora_consulta}</td>
+                    <td>${p.diagnostico}</td>
+                    <td>${p.doctor}</td>
+                    <td>${p.estado}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            const tbody = document.getElementById('cuerpo-tabla');
+            tbody.innerHTML = `<tr><td colspan="8" class="center-align">Error al cargar los pacientes: ${error}</td></tr>`;
+            console.error(error);
+        });
+    });
+</script>
+{% endblock %}

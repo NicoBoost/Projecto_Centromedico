@@ -64,6 +64,23 @@ def editar(request, id):
     paciente = response.json() if response.status_code == 200 else {}
     return render(request, 'editar.html', {'paciente': paciente})
 
+# ------------------------------
+# Pacientes Gripales
+# ------------------------------
+def pacientes_gripales(request):
+    """
+    Consulta la API para traer solo pacientes con estado gripal
+    """
+    try:
+        response = requests.get(f'{API_URL}estado_gripal/')     # endpoint personalizado
+        response.raise_for_status()                             # lanza excepción si hay error
+        pacientes = response.json()                             # lista de diccionarios
+    except requests.RequestException as e:
+        print("Error al consultar la API:", e)
+        pacientes = []                                          # fallback: lista vacía
+
+    return render(request, 'pacientes_gripales.html', {'pacientes': pacientes})
+
 
 # ------------------------------
 # Eliminar paciente
